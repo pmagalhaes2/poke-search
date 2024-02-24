@@ -5,6 +5,7 @@ const searchButton = document.querySelector("#search-button");
 let pokedex = [];
 
 const listPokemons = () => {
+  emptyPokedex();
   loadPokedexFromLocalStorage();
 
   if (pokedex.length > 0) {
@@ -70,6 +71,10 @@ const emptyInput = () => {
   input.value = "";
 };
 
+const emptyPokedex = () => {
+  container.innerHTML = "";
+};
+
 const addPokemonToList = (name, front_default, type) => {
   const existingPokemon = validateExistingPokemon(name);
 
@@ -77,6 +82,15 @@ const addPokemonToList = (name, front_default, type) => {
     pokedex.push({ name, front_default, type });
     savePokedexToLocalStorage();
   }
+};
+
+const removePokemon = (pokemonName) => {
+  const indexToRemove = pokedex.findIndex(
+    (pokemon) => pokemon.name === pokemonName
+  );
+  pokedex.splice(indexToRemove, 1);
+  savePokedexToLocalStorage();
+  listPokemons();
 };
 
 const updateAddButton = () => {
@@ -119,7 +133,7 @@ const listPokemon = (pokemon) => {
 
   let buttonHTML = "";
   if (existingPokemon) {
-    buttonHTML = `<button class="remove-button" onclick="console.log('botão remover clicado')">Remover</button>`;
+    buttonHTML = `<button class="remove-button" onclick="removePokemon('${name}')">Remover</button>`;
   } else {
     buttonHTML = `<button class="add-button" onclick="addPokemonToList('${name}', '${front_default}', '${type}'); updateAddButton();">Adicionar</button>`;
   }
