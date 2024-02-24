@@ -117,7 +117,13 @@ const listPokemon = (pokemon) => {
   const backgroundColor = `var(${type_colors[type]})`;
 
   const existingPokemon = validateExistingPokemon(name);
-  const addButtonDisabled = existingPokemon ? "disabled" : "";
+
+  let buttonHTML = "";
+  if (existingPokemon) {
+    buttonHTML = `<button class="remove-button" onclick="console.log('botão remover clicado')">Remover</button>`;
+  } else {
+    buttonHTML = `<button class="add-button" onclick="addPokemonToList('${name}', '${front_default}', '${type}'); updateAddButton();">Adicionar</button>`;
+  }
 
   container.innerHTML += `
     <div class="pokemon-content" style="border: 2px solid ${backgroundColor}"}>
@@ -127,7 +133,7 @@ const listPokemon = (pokemon) => {
             <span style="background-color: ${backgroundColor}">${type}</span>
         </div>
     </div>
-    <button class="add-button" onclick="addPokemonToList('${name}', '${front_default}', '${type}') ${addButtonDisabled}">Adicionar</button>
+    ${buttonHTML}
   `;
 };
 

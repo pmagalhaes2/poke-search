@@ -170,7 +170,8 @@ body {
       }
     }
 
-    .add-button {
+    .add-button,
+    .remove-button {
       border: 2px solid var(--blue);
       border-radius: 1rem;
       color: var(--grey);
