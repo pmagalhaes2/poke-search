@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poké Search</title>
+    <link rel="stylesheet" href="./src/styles/style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <header>
+        <img
+          src="./src/assets/images/Logo Poke Search.png"
+          alt="Logo Poké Search"
+          width="500"
+          onclick="location.reload()"
+        />
+        <h1>Explore o universo Pokémon</h1>
+        <p>
+          Mergulhe no domínio deslumbrante de todos os personagens clássicos que
+          você ama - e aqueles que você descobrirá em breve!
+        </p>
+      </header>
+      <div id="search-container">
+        <input
+          type="text"
+          id="input-pokemon"
+          placeholder="Insira o nome do pokémon para efetuar a busca"
+        />
+        <button id="search-button"></button>
+      </div>
+      <div class="pokemon-container"></div>
+    </div>
+    <footer>
+      <p>© Desenvolvido por Patricia Magalhães - 2024</p>
+      <p>Todos os direitos reservados.</p>
+    </footer>
+    <script src="./src/scripts/script.js"></script>
+  </body>
+</html>
