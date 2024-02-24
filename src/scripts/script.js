@@ -76,7 +76,6 @@ const addPokemonToList = (name, front_default, type) => {
   if (!existingPokemon) {
     pokedex.push({ name, front_default, type });
     savePokedexToLocalStorage();
-    updateAddButton();
   }
 };
 
@@ -126,7 +125,8 @@ const listPokemon = (pokemon) => {
   }
 
   container.innerHTML += `
-    <div class="pokemon-content" style="border: 2px solid ${backgroundColor}"}>
+  <div class="pokemon-content">
+    <div class="pokemon-card" style="border: 2px solid ${backgroundColor}"}>
         <img src="${front_default}" />
         <div class="pokemon-information">
             <h2>${name}</h2>
@@ -134,6 +134,7 @@ const listPokemon = (pokemon) => {
         </div>
     </div>
     ${buttonHTML}
+  </div>
   `;
 };
 
