@@ -61,6 +61,13 @@ const updateAddButton = () => {
   addButton.setAttribute("disabled", "");
 };
 
+const updateRemoveButton = (id) => {
+  const removeButton = document.querySelector(`#${id}`);
+  removeButton.textContent = "Removido";
+  removeButton.removeAttribute("onclick");
+  removeButton.setAttribute("disabled", "");
+};
+
 const searchPokemon = async (pokemonName) => {
   try {
     const result = await fetch(
@@ -154,9 +161,9 @@ const listPokemon = (pokemon) => {
 
   let buttonHTML = "";
   if (existingPokemon) {
-    buttonHTML = `<button class="remove-button" onclick="removePokemon('${name}')">Remover</button>`;
+    buttonHTML = `<button class="remove-button" id=${name} onclick="removePokemon(); updateRemoveButton('${name}');">Remover</button>`;
   } else {
-    buttonHTML = `<button class="add-button" onclick="addPokemonToList('${name}', '${front_default}', '${type}'); updateAddButton();">Adicionar</button>`;
+    buttonHTML = `<button class="add-button" id=${name} onclick="addPokemonToList('${name}', '${front_default}', '${type}'); updateAddButton();">Adicionar</button>`;
   }
 
   container.innerHTML += `
