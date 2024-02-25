@@ -31,6 +31,36 @@ const handleKeyPress = (event) => {
   }
 };
 
+const emptyInput = () => {
+  input.value = "";
+};
+
+const emptyPokedex = () => {
+  container.innerHTML = "";
+};
+
+const createModal = (type) => {
+  const modalType = type === "addedPokemon" ? "adicionado" : "removido";
+
+  container.innerHTML += `
+  <div class="confirmation-container">
+    <h2>Pokémon ${modalType} com sucesso!</h2>
+    <button onclick="listPokemons()">Ver lista</button>
+    <button onclick="listPokemons(); inputFocus()">Continuar busca</button>
+  </div>`;
+};
+
+const inputFocus = () => {
+  input.focus();
+};
+
+const updateAddButton = () => {
+  const addButton = document.querySelector(".add-button");
+  addButton.textContent = "Adicionado";
+  addButton.removeAttribute("onclick");
+  addButton.setAttribute("disabled", "");
+};
+
 const searchPokemon = async (pokemonName) => {
   try {
     const result = await fetch(
@@ -72,31 +102,14 @@ const handlePokemonNotFound = (statusCode) => {
   }
 };
 
-const emptyInput = () => {
-  input.value = "";
-};
-
-const emptyPokedex = () => {
-  container.innerHTML = "";
-};
-
 const addPokemonToList = (name, front_default, type) => {
   const existingPokemon = validateExistingPokemon(name);
 
   if (!existingPokemon) {
     pokedex.push({ name, front_default, type });
     savePokedexToLocalStorage();
-    container.innerHTML += `
-      <div class="confirmation-container">
-        <h2>Pokémon adicionado com sucesso!</h2>
-        <button onclick="listPokemons()">Ver lista</button>
-        <button onclick="listPokemons(); inputFocus()">Continuar busca</button>
-      </div>`;
+    createModal("addedPokemon");
   }
-};
-
-const inputFocus = () => {
-  input.focus();
 };
 
 const removePokemon = (pokemonName) => {
@@ -105,14 +118,7 @@ const removePokemon = (pokemonName) => {
   );
   pokedex.splice(indexToRemove, 1);
   savePokedexToLocalStorage();
-  listPokemons();
-};
-
-const updateAddButton = () => {
-  const addButton = document.querySelector(".add-button");
-  addButton.textContent = "Adicionado";
-  addButton.removeAttribute("onclick");
-  addButton.setAttribute("disabled", "");
+  createModal("removedPokemon");
 };
 
 const validateExistingPokemon = (pokemonName) => {
