@@ -13,7 +13,8 @@ const listPokemons = () => {
       listPokemon(pokemon);
     });
   } else {
-    container.innerHTML = `<h2>Lista de Pokémons vazia!</h2>`;
+    container.innerHTML =
+      "<img src='src/assets/images/Pokebola.gif' width='250' />";
   }
 };
 
@@ -57,7 +58,11 @@ const handlePokemonNotFound = (statusCode) => {
   switch (statusCode) {
     case 404:
       container.innerHTML = `
-            <h2 class='not-found'>Pokémon não encontrado!</h2>
+      <div class="not-found-container">
+          <h2>Ops!</h2>
+          <p>Parece que a busca não trouxe resultados.</p>
+          <img src="src/assets/images/Image error.png" />
+      </div>
         `;
       throw new Error("Pokémon não encontrado.");
     case 500:
@@ -81,7 +86,17 @@ const addPokemonToList = (name, front_default, type) => {
   if (!existingPokemon) {
     pokedex.push({ name, front_default, type });
     savePokedexToLocalStorage();
+    container.innerHTML += `
+      <div class="confirmation-container">
+        <h2>Pokémon adicionado com sucesso!</h2>
+        <button onclick="listPokemons()">Ver lista</button>
+        <button onclick="listPokemons(); inputFocus()">Continuar busca</button>
+      </div>`;
   }
+};
+
+const inputFocus = () => {
+  input.focus();
 };
 
 const removePokemon = (pokemonName) => {
