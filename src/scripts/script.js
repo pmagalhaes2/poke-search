@@ -161,7 +161,7 @@ const listPokemon = (pokemon) => {
 
   let buttonHTML = "";
   if (existingPokemon) {
-    buttonHTML = `<button class="remove-button" id=${name} onclick="removePokemon(); updateRemoveButton('${name}');">Remover</button>`;
+    buttonHTML = `<button class="remove-button" id=${name} onclick="removePokemon('${name}'); updateRemoveButton('${name}');">Remover</button>`;
   } else {
     buttonHTML = `<button class="add-button" id=${name} onclick="addPokemonToList('${name}', '${front_default}', '${type}'); updateAddButton();">Adicionar</button>`;
   }
