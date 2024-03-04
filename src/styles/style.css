@@ -268,3 +268,59 @@ footer {
   height: 10rem;
   width: 100%;
 }
+
+@media (max-width: 767px) {
+  .content {
+    padding: 2rem;
+    width: 100%;
+
+    header {
+      flex-wrap: wrap;
+
+      img {
+        width: 350px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    #search-container {
+      padding: 0.5rem;
+      width: 100%;
+
+      input {
+        padding: 0.5rem;
+
+        &::placeholder {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .pokemon-container {
+      row-gap: 3rem;
+      
+      .not-found-container {
+        text-align: center;
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+
+        img {
+          width: 300px;
+        }
+      }
+    }
+  }
+}
