@@ -1,6 +1,6 @@
 #  Poké Search
 
-![enter link description here](https://github.com/pmagalhaes2/prompt-todo/blob/main/src/assets/todo-list.PNG?raw=true)
+![enter link description here](https://github.com/pmagalhaes2/poke-search/blob/main/src/assets/images/poke-search.gif?raw=true)
 
 O Poké Search é uma aplicação que permite criar sua própria lista de Pokémons. Essa aplicação consome a **[Poké API](https://pokeapi.co/)** e realiza consulta dos Pokémons com base no dado de nome buscado pelo usuário. 
 
